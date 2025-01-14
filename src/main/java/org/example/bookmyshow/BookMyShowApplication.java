@@ -1,6 +1,8 @@
 package org.example.bookmyshow;
 
 import org.example.bookmyshow.controllers.UserController;
+import org.example.bookmyshow.dtos.LoginRequestDto;
+import org.example.bookmyshow.dtos.LoginResponseDto;
 import org.example.bookmyshow.dtos.SignupRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,9 +26,18 @@ public class BookMyShowApplication implements CommandLineRunner {
         SignupRequestDto requestDto = new SignupRequestDto();
 
         requestDto.setName("John Doe");
-        requestDto.setEmail("john11.doe@gmail.com");
+        requestDto.setEmail("abcd@gmail.com");
         requestDto.setPassword("123456");
 
         userController.Signup(requestDto);
+
+        LoginRequestDto loginRequestDto = new LoginRequestDto();
+
+        loginRequestDto.setEmail("abcd@gmail.com");
+        loginRequestDto.setPassword("123456");
+
+        LoginResponseDto loginResponseDto= userController.Login(loginRequestDto);
+        System.out.println(loginResponseDto.getUserId());
+        System.out.println(loginResponseDto.getStatus());
     }
 }

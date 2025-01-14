@@ -1,6 +1,8 @@
 package org.example.bookmyshow.services;
 
+import org.example.bookmyshow.exception.PasswordIsWrong;
 import org.example.bookmyshow.exception.UserAlreadyPresentException;
+import org.example.bookmyshow.exception.UserNotSignUpException;
 import org.example.bookmyshow.models.User;
 import org.example.bookmyshow.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -25,7 +28,7 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyPresentException("User is already present in DB");
         }
 
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
         String encodedPassword = bCryptPasswordEncoder.encode(password);
 
         User user = new User();
@@ -34,5 +37,22 @@ public class UserServiceImpl implements UserService {
         user.setName(username);
 
         return userRepository.save(user);
+    }
+
+    public User LoginUser(String email, String password) throws UserNotSignUpException, PasswordIsWrong {
+        User user = userRepository.findByEmail(email);
+
+        if(user == null) {
+            throw new UserNotSignUpException("Please SignUp User Not available");
+        }
+
+        String encodedPassword = bCryptPasswordEncoder.encode(password);
+
+//        User user = new User();
+
+        if(encodedPassword.equals(user.getPassword())) {
+            return user;
+        }
+        throw new PasswordIsWrong("Please enter correct password");
     }
 }

@@ -3,20 +3,17 @@ package org.example.bookmyshow.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.awt.*;
 import java.util.List;
 
 @Data
 @Entity
-public class Screen extends BaseModel{
-    private String name;
-    @ManyToOne
-    private Theatre theatre;
+public class Movie extends BaseModel{
 
-    @OneToMany
-    private List<Seat> seats;
+    private String name;
+    @Enumerated(value = EnumType.ORDINAL)
+    private Genre genre;
     @Enumerated(value = EnumType.ORDINAL) //use when we use enum
     @ElementCollection   //use when we have list of enum's
-    private List<Feature> features;
-
+    private List<Feature> featureList;
+    private int duration;
 }

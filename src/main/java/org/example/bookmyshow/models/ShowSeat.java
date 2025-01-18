@@ -1,18 +1,17 @@
-//package org.example.bookmyshow.models;
-//
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Enumerated;
-//import jakarta.persistence.OneToOne;
-//import lombok.Data;
-//
-//@Data
-//@Entity
-//public class ShowSeat extends BaseModel{
-//    @OneToOne
-//    private Show show;
-//
-//    private Seat seat;
-//    private User user;
-//    @Enumerated
-//    private SeatStatus status;
-//}
+package org.example.bookmyshow.models;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+public class ShowSeat extends BaseModel{
+    @ManyToOne
+    private Show show;
+    @ManyToOne
+    private Seat seat;
+    @ManyToOne
+    private User bookedBy;
+    @Enumerated(value = EnumType.ORDINAL)
+    private SeatStatus seatStatus;
+}

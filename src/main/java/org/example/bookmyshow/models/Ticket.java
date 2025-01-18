@@ -8,12 +8,16 @@
 //@Data
 //@Entity
 //public class Ticket extends BaseModel{
+//
+//    @ManyToOne
+//    private Movie movie;
 //    @ManyToOne
 //    private Show show;
 //    @OneToMany
-//    private List<Seat> seat;
+//    private List<ShowSeat> showSeats;
 //    @ManyToOne
 //    private User user;
+//    private TicketStatus status;
 //    private double totalamount;
 //
 //    @Enumerated(EnumType.STRING)

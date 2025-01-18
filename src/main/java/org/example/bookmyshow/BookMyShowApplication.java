@@ -23,17 +23,17 @@ public class BookMyShowApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        SignupRequestDto requestDto = new SignupRequestDto();
-
-        requestDto.setName("John Doe");
-        requestDto.setEmail("abcd@gmail.com");
-        requestDto.setPassword("123456");
-
-        userController.Signup(requestDto);
+//        SignupRequestDto requestDto = new SignupRequestDto();
+//
+//        requestDto.setName("John Doe");
+//        requestDto.setEmail("abcd@gmail.com");
+//        requestDto.setPassword("123456");
+//
+//        userController.Signup(requestDto);
 
         LoginRequestDto loginRequestDto = new LoginRequestDto();
 
-        loginRequestDto.setEmail("abcd@gmail.com");
+        loginRequestDto.setEmail("abcd12@gmail.com");
         loginRequestDto.setPassword("123456");
 
         LoginResponseDto loginResponseDto= userController.Login(loginRequestDto);

@@ -48,11 +48,12 @@ public class UserServiceImpl implements UserService {
 
         String encodedPassword = bCryptPasswordEncoder.encode(password);
 
-//        User user = new User();
-
-        if(encodedPassword.equals(user.getPassword())) {
+        if(bCryptPasswordEncoder.matches(password, user.getPassword())) {
             return user;
         }
+//        if(encodedPassword.equals(user.getPassword())) {
+//            return user;
+//        }
         throw new PasswordIsWrong("Please enter correct password");
     }
 }

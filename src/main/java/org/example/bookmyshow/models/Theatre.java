@@ -11,6 +11,6 @@ import java.util.List;
 public class Theatre extends BaseModel{
     private String name;
     private String address;
-    @OneToMany(mappedBy = "theatre")
+    @OneToMany
     private List<Screen> screens;
 }

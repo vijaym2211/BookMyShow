@@ -12,32 +12,32 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing  //use for create date and update date
-public class BookMyShowApplication implements CommandLineRunner {
-
-    @Autowired
-    private UserController userController;
+//public class BookMyShowApplication implements CommandLineRunner {
+public class BookMyShowApplication{
+//    @Autowired
+//    private UserController userController;
 
     public static void main(String[] args) {
         SpringApplication.run(BookMyShowApplication.class, args);
     }
-
-    @Override
-    public void run(String... args) throws Exception {
-//        SignupRequestDto requestDto = new SignupRequestDto();
 //
-//        requestDto.setName("John Doe");
-//        requestDto.setEmail("abcd@gmail.com");
-//        requestDto.setPassword("123456");
+//    @Override
+//    public void run(String... args) throws Exception {
+////        SignupRequestDto requestDto = new SignupRequestDto();
+////
+////        requestDto.setName("John Doe");
+////        requestDto.setEmail("abcd@gmail.com");
+////        requestDto.setPassword("123456");
+////
+////        userController.Signup(requestDto);
 //
-//        userController.Signup(requestDto);
-
-        LoginRequestDto loginRequestDto = new LoginRequestDto();
-
-        loginRequestDto.setEmail("abcd12@gmail.com");
-        loginRequestDto.setPassword("123456");
-
-        LoginResponseDto loginResponseDto= userController.Login(loginRequestDto);
-        System.out.println(loginResponseDto.getUserId());
-        System.out.println(loginResponseDto.getStatus());
-    }
+//        LoginRequestDto loginRequestDto = new LoginRequestDto();
+//
+//        loginRequestDto.setEmail("abcd12@gmail.com");
+//        loginRequestDto.setPassword("123456");
+//
+//        LoginResponseDto loginResponseDto= userController.Login(loginRequestDto);
+//        System.out.println(loginResponseDto.getUserId());
+//        System.out.println(loginResponseDto.getStatus());
+//    }
 }

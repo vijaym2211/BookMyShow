@@ -1,32 +1,29 @@
-package org.example.bookmyshow.models;
+package org.example.bookmyshow.dtos;
 
-import jakarta.persistence.*;
 import lombok.Data;
+import org.example.bookmyshow.models.*;
 
 import java.util.List;
 
 @Data
-@Entity(name = "ticket")
-public class Ticket extends BaseModel{
+public class BookTicketResponseDTO {
 
-    @ManyToOne
+    private int ticketId;
     private Movie movie;
-    @ManyToOne
     private Show show;
-    @OneToMany
-    private List<ShowSeat> showSeats;
-    @ManyToOne
+    private List<ShowSeat> bookedSeats;
     private User user;
-    @Enumerated(EnumType.ORDINAL)
     private TicketStatus status;
     private double totalamount;
-
-//    @Enumerated(EnumType.STRING)
-//    private BookingStatus status;
-
-    @OneToMany
     private List<Payment> payments;
 
+    public int getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
 
     public Movie getMovie() {
         return movie;
@@ -44,12 +41,12 @@ public class Ticket extends BaseModel{
         this.show = show;
     }
 
-    public List<ShowSeat> getShowSeats() {
-        return showSeats;
+    public List<ShowSeat> getBookedSeats() {
+        return bookedSeats;
     }
 
-    public void setShowSeats(List<ShowSeat> showSeats) {
-        this.showSeats = showSeats;
+    public void setBookedSeats(List<ShowSeat> bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 
     public User getUser() {

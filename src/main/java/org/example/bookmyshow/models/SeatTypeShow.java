@@ -1,13 +1,15 @@
-//package org.example.bookmyshow.models;
-//
-//import jakarta.persistence.Entity;
-//import lombok.Data;
-//
-//@Data
-//@Entity
-//public class SeatTypeShow extends BaseModel{
-//    private Show show;
-//    private SeatType seatType;
-//    private double price;
-//
-//}
+package org.example.bookmyshow.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
+@Data
+@Entity(name = "seat_type_shows")
+public class SeatTypeShow extends BaseModel{
+    @ManyToOne
+    private Show show;
+    private SeatType seatType;
+    private double price;
+
+}

@@ -11,11 +11,40 @@ import java.util.List;
 public class Show extends BaseModel{
     @ManyToOne
     private Movie movie;
-    @OneToOne
+    @ManyToOne
     private Screen screen;
     private Date startTime;
     private Date endTime;
-    @Enumerated(value = EnumType.ORDINAL) //use when we use enum
-    @ElementCollection   //use when we have list of enum's
-    private List<Feature> featureList;
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public void setScreen(Screen screen) {
+        this.screen = screen;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

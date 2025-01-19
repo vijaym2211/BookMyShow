@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Screen extends BaseModel{
     private String name;
-    @ManyToOne
-    private Theatre theatre;
+//    @ManyToOne
+//    private Theatre theatre;
 
     @OneToMany
     private List<Seat> seats;

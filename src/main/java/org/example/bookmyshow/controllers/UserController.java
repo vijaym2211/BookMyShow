@@ -9,8 +9,14 @@ import org.example.bookmyshow.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.jaas.LoginExceptionResolver;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+@RestController // Indicates this class is a RESTful controller
+@RequestMapping("/api/users") // Base URL for all user-related endpoints
 public class UserController {
 
     private UserService userService;
@@ -23,8 +29,8 @@ public class UserController {
     }
 
 
-
-    public SignupResponseDto Signup(SignupRequestDto requestDto) {
+    @PostMapping("/signup")
+    public SignupResponseDto Signup(@RequestBody SignupRequestDto requestDto) {
         SignupResponseDto responseDto = new SignupResponseDto();
 
 //        userServiceImpl.LoginUser(null,null);
@@ -39,7 +45,9 @@ public class UserController {
         }
         return responseDto;
     }
-    public LoginResponseDto Login(LoginRequestDto loginRequestDto){
+
+    @PostMapping("/login")
+    public LoginResponseDto Login(@RequestBody LoginRequestDto loginRequestDto){
         LoginResponseDto loginResponseDto = new LoginResponseDto();
 
         try{

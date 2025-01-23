@@ -16,6 +16,17 @@ public class Show extends BaseModel{
     private Date startTime;
     private Date endTime;
 
+//    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL) // Establishing the relationship
+//    private List<ShowSeat> showSeats;
+//
+//    public List<ShowSeat> getShowSeats() {
+//        return showSeats;
+//    }
+//
+//    public void setShowSeats(List<ShowSeat> showSeats) {
+//        this.showSeats = showSeats;
+//    }
+
     public Movie getMovie() {
         return movie;
     }

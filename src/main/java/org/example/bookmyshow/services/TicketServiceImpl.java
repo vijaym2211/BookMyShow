@@ -48,7 +48,7 @@ public class TicketServiceImpl implements TicketService{
         User user = userRepository.findById(userId).orElseThrow(() -> new InvalidUserException("User not Found"));
 
         // Fetch available seats
-        List<ShowSeat> availableSeats = showSeatRepository.findAllByIdInAndSeatStatus_Available(showSeatId);
+        List<ShowSeat> availableSeats = showSeatRepository.findAllByIdInAndSeatStatus(showSeatId , SeatStatus.AVAILABLE);
 
         Set<Integer> availableSeatsIds = availableSeats.stream().map(ShowSeat::getId).collect(Collectors.toSet());
         List<Integer> unAvailableSeatsIds = availableSeatsIds.stream().filter(seatId -> !availableSeatsIds.contains(seatId)).collect(Collectors.toList());

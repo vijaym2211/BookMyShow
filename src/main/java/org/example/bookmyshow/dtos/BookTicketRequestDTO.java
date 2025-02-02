@@ -11,15 +11,6 @@ public class BookTicketRequestDTO {
 
     private List<Integer> showSeatsId;
     private int userId;
-//    private String paymentGateway;
-//
-//    public String getPaymentGateway() {
-//        return paymentGateway;
-//    }
-//
-//    public void setPaymentGateway(String paymentGateway) {
-//        this.paymentGateway = paymentGateway;
-//    }
 
     public List<Integer> getShowSeatsId() {
         return showSeatsId;

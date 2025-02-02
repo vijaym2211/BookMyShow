@@ -1,17 +1,21 @@
 package org.example.bookmyshow.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 import java.util.Date;
-import java.util.List;
 
-@Data
 @Entity
+@Table(name = "shows")
 public class Show extends BaseModel{
     @ManyToOne
+//    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
     @ManyToOne
+//    @JoinColumn(name = "screen_id", nullable = false)
     private Screen screen;
     private Date startTime;
     private Date endTime;
@@ -26,6 +30,7 @@ public class Show extends BaseModel{
 //    public void setShowSeats(List<ShowSeat> showSeats) {
 //        this.showSeats = showSeats;
 //    }
+
 
     public Movie getMovie() {
         return movie;

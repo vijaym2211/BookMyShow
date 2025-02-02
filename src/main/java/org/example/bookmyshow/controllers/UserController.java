@@ -1,6 +1,7 @@
 package org.example.bookmyshow.controllers;
 
 import org.example.bookmyshow.dtos.*;
+import org.example.bookmyshow.dtos.ResponseStatus;
 import org.example.bookmyshow.exception.PasswordIsWrong;
 import org.example.bookmyshow.exception.UserNotSignUpException;
 import org.example.bookmyshow.models.User;
@@ -9,11 +10,9 @@ import org.example.bookmyshow.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.jaas.LoginExceptionResolver;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3307")  // Fixed CORS URL with full protocol
 
 @RestController // Indicates this class is a RESTful controller
 @RequestMapping("/api/users") // Base URL for all user-related endpoints

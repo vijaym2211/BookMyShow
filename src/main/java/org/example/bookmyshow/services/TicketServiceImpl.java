@@ -51,7 +51,10 @@ public class TicketServiceImpl implements TicketService{
         List<ShowSeat> availableSeats = showSeatRepository.findAllByIdInAndSeatStatus(showSeatId , SeatStatus.AVAILABLE);
 
         Set<Integer> availableSeatsIds = availableSeats.stream().map(ShowSeat::getId).collect(Collectors.toSet());
-        List<Integer> unAvailableSeatsIds = availableSeatsIds.stream().filter(seatId -> !availableSeatsIds.contains(seatId)).collect(Collectors.toList());
+//        List<Integer> unAvailableSeatsIds = availableSeatsIds.stream().filter(seatId -> !availableSeatsIds.contains(seatId)).collect(Collectors.toList());
+        List<Integer> unAvailableSeatsIds = showSeatId.stream()
+                .filter(seatId -> !availableSeatsIds.contains(seatId))
+                .collect(Collectors.toList());
         if(!unAvailableSeatsIds.isEmpty()){
             throw new SomeOrAllSeatsAreUnavailable("Some/All seats are booked. Unavailable seat IDs: " + unAvailableSeatsIds);
         }

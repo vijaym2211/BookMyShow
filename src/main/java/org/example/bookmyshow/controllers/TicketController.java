@@ -2,6 +2,8 @@ package org.example.bookmyshow.controllers;
 
 import org.example.bookmyshow.dtos.BookTicketRequestDTO;
 import org.example.bookmyshow.dtos.BookTicketResponseDTO;
+import org.example.bookmyshow.exception.InvalidUserException;
+import org.example.bookmyshow.exception.SomeOrAllSeatsAreUnavailable;
 import org.example.bookmyshow.models.*;
 import org.example.bookmyshow.services.TicketService;
 import org.example.bookmyshow.services.TicketServiceImpl;
@@ -24,7 +26,7 @@ public class TicketController {
     }
 
     @PostMapping("/book")
-    public BookTicketResponseDTO bookTicket(@RequestBody BookTicketRequestDTO bookTicketRequestDTO) {
+    public BookTicketResponseDTO bookTicket(@RequestBody BookTicketRequestDTO bookTicketRequestDTO) throws InvalidUserException, SomeOrAllSeatsAreUnavailable{
         try{
             Ticket ticket = ticketService.bookTicket(bookTicketRequestDTO.getUserId(),bookTicketRequestDTO.getShowSeatsId());
             BookTicketResponseDTO bookTicketDTO = mapToResponseDTO(ticket);

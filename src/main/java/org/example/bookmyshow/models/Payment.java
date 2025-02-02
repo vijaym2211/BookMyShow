@@ -13,12 +13,13 @@ import java.time.LocalDateTime;
 public class Payment extends BaseModel{
     private String transactionId;
     private double transactionAmount;
-    @Enumerated(value = EnumType.ORDINAL)
+    @Enumerated(value = EnumType.STRING)
     private PaymentStatus status;
     private LocalDateTime paymentDate;
 
     @ManyToOne
     private Ticket ticket;
+    private String paymentGateway;
 
 
 }
